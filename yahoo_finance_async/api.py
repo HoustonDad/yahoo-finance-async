@@ -123,7 +123,6 @@ class OHLC:
                     f"Yahoo Finance API responded with a specific error - {errors}"
                 )
             result = response["chart"]["result"][0]
-
             meta = result["meta"]
 
             # Convert timestamps to datetimes
@@ -153,6 +152,9 @@ class OHLC:
                     }
                 )
 
+            return candles, meta
+
+        except TypeError as e:
             return candles, meta
 
         except Exception as e:
